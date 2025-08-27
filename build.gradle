@@ -3,7 +3,7 @@ buildscript {
 		mavenCentral()
 		maven {
 			name = "forge"
-			url = "http://files.minecraftforge.net/maven"
+			url = "https://maven.minecraftforge.net/"
 		}
 
 		maven {
@@ -11,7 +11,11 @@ buildscript {
 			url = "https://oss.sonatype.org/content/repositories/snapshots/"
 		}
 	}
-	dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT' }
+	dependencies {
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+            changing = true
+        }
+    }
 }
 
 repositories {
@@ -40,7 +44,7 @@ sourceSets.main.scala.srcDir "src/main/java"
 sourceSets.main.java.srcDirs = []
 
 minecraft {
-	version = "${forge_version}-${minecraft_version}"
+	version = "${minecraft_version}-${forge_version}-${minecraft_version}"
 
 	replace "@ModVersion@", project.version
 }
